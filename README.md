@@ -1,1 +1,2 @@
 # countdown
+I am creating a countdown website for when I go to Auburn. My goal is to make it customizable to where when you click the button. A new menu will pop up below with the fields neccisary to create a new countdown.
