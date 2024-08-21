@@ -13,7 +13,51 @@ body {
     background-color: rgb(232, 119, 34);
     color: rgb(12, 35, 64);
     justify-content: center;
+    padding: 30px;
+    font-size: 50px;
+    font-weight: 700;
+}
+
+.img-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 80px;
+}
+
+#countdown {
+    background-color: rgb(232, 119, 34);
+    color: rgb(12, 35, 64);
+    font-size: 30px;
+    padding: 40px;
+    border-radius: 5px;
+}
+
+#create-button {
+    background-color: rgb(232, 119, 34);
+    color: rgb(12, 35, 64);
     padding: 20px;
-    font-size: 40px;
-    
+    border-width: 1px;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.extra-space {
+    height: 150px;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    background-color: rgb(232, 119, 34);
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
 }
