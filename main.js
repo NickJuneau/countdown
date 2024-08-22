@@ -26,37 +26,79 @@ let updateTime = setInterval(function() {
     }
 }, 1000);
 
+//So you can't press create more than once at a time
+let canCreate = true;
+
 createButton.addEventListener('click', () => {
-    createCountdown();
+    if(canCreate){
+        createCountdown();
+    }
+});
+
+
+//CREATING ELEMENTS FOR THE CREATION OF A NEW COUNTDOWN
+//TITLE INPUT SECTION
+const titleInputLabel = document.createElement('div');
+titleInputLabel.classList.add('input-context');
+titleInputLabel.textContent = "Enter Countdown Title Below";
+
+const titleInput = document.createElement('input');
+titleInput.classList.add('create-input');
+
+//DATE INPUT SECTION
+const dateInputLabel = document.createElement('div');
+dateInputLabel.classList.add('input-context');
+dateInputLabel.textContent = "Date Format: 'YYYY-MM-DDTHH:mm:ss' (Leave the  'T' between the DD and HH)";
+
+const dateInput = document.createElement('input');
+dateInput.classList.add('create-input');
+
+//CUSTOM IMAGE (Not Working)
+// const checkboxContainer = document.querySelector('.checkbox-container');
+
+// const imgCheck = document.createElement('input');
+// imgCheck.setAttribute('type', 'checkbox');
+
+// const imgCheckLabel = document.createElement('div');
+// imgCheckLabel.textContent = 'Custom Image?';
+// imgCheckLabel.classList.add('input-context');
+
+// const imageInput = document.createElement('input');
+// imageInput.setAttribute('type', 'file');
+// imageInput.classList.add('input-context');
+
+// imgCheck.addEventListener('click', () =>{
+//     customImageContainer.appendChild(imageInput);
+
+// });
+
+//SUBMIT BUTTON
+const submitButton = document.createElement('button');
+submitButton.classList.add('button-theme')
+submitButton.textContent = 'Submit';
+
+
+//VAIABLES FOR PAGE ELEMENTS
+const pageTitle = document.querySelector('#header-text');
+const pageImage = document.querySelector('#main-img');
+
+submitButton.addEventListener('click', () => {
+    pageTitle.textContent = titleInput.value;
+    // pageImage.setAttribute('src', imageInput.value);
+    countDownDate = new Date(dateInput.value).getTime();
+    createContainer.remove();
 });
 
 function createCountdown(){
-    //TITLE INPUT SECTION
-    const titleInputLabel = document.createElement('div');
-    titleInputLabel.classList.add('input-context');
-    titleInputLabel.textContent = "Enter Countdown Title Below";
 
-    const titleInput = document.createElement('input');
-    titleInput.classList.add('create-input');
-
-    //DATE INPUT SECTION
-    const dateInputLabel = document.createElement('div');
-    dateInputLabel.classList.add('input-context');
-    dateInputLabel.textContent = "Date Format: 'YYYY-MM-DDTHH:mm:ss' (Leave the  'T' between the DD and HH)";
-
-    const dateInput = document.createElement('input');
-    dateInput.classList.add('create-input');
-
-    //CUSTOM IMAGE
-    const imgCheck = document.createElement('button');
-    imgCheck.setAttribute('type', 'radio');
-    imgCheck.textContent = "Custom Image";
-
-
-    //ADDING INTO DOM
+    //ADDING ELEMENTS INTO DOM
     createTitleContainer.appendChild(titleInputLabel);
     createTitleContainer.appendChild(titleInput);
     createDateContainer.appendChild(dateInputLabel);
     createDateContainer.appendChild(dateInput);
-    customImageContainer.appendChild(imgCheck);
+    // checkboxContainer.appendChild(imgCheck);
+    // checkboxContainer.appendChild(imgCheckLabel);
+    createContainer.appendChild(submitButton);
+
+    canCreate = !canCreate;
 }
